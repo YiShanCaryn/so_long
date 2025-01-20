@@ -6,7 +6,7 @@
 #    By: yishan <yishan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/09 13:47:08 by yisho             #+#    #+#              #
-#    Updated: 2025/01/02 18:25:23 by yishan           ###   ########.fr        #
+#    Updated: 2025/01/17 10:22:46 by yishan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SOURCES = \
 		ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
 		ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
 		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+		get_next_line.c get_next_line_utils.c \
 	
 SRCSBONUS = ft_lstnew.c \
 			ft_lstadd_front.c \
