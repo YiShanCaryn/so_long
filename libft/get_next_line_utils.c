@@ -6,13 +6,13 @@
 /*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:56:04 by yishan            #+#    #+#             */
-/*   Updated: 2025/01/18 15:46:39 by yishan           ###   ########.fr       */
+/*   Updated: 2025/01/26 23:37:04 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_bzero(void *s, size_t n)
+void	gft_bzero(void *s, size_t n)
 {
 	char	*str;
 	size_t	i;
@@ -26,18 +26,18 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-void	*ft_calloc(size_t elementnum, size_t elementsize)
+void	*gft_calloc(size_t elementnum, size_t elementsize)
 {
 	char	*resource;
 
 	resource = malloc(elementnum * elementsize);
 	if (!resource)
 		return (NULL);
-	ft_bzero(resource, elementnum * elementsize);
+	gft_bzero(resource, elementnum * elementsize);
 	return (resource);
 }
 
-char	*ft_strchr(const char	*string, int searchChar)
+char	*gft_strchr(const char	*string, int searchChar)
 {
 	char	*str;
 
@@ -50,7 +50,7 @@ char	*ft_strchr(const char	*string, int searchChar)
 		return (NULL);
 }
 
-size_t	gt_strlen(const char	*s)
+size_t	gft_strlen(const char	*s)
 {
 	int	i;
 
@@ -60,14 +60,14 @@ size_t	gt_strlen(const char	*s)
 	return (i);
 }
 
-char	*ft_strjoin(const char	*s1, const char	*s2)
+char	*gft_strjoin(const char	*s1, const char	*s2)
 {
 	int		totalsize;
 	char	*res;
 	int		i;
 	int		j;
 
-	totalsize = ft_strlen(s1) + ft_strlen(s2);
+	totalsize = gft_strlen(s1) + gft_strlen(s2);
 	res = malloc (sizeof(char) * (totalsize + 1));
 	if (!res || !s1 || !s2)
 		return (NULL);

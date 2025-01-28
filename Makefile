@@ -6,38 +6,47 @@
 #    By: yishan <yishan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 13:11:07 by yisho             #+#    #+#              #
-#    Updated: 2025/01/20 14:03:19 by yishan           ###   ########.fr        #
+#    Updated: 2025/01/27 11:18:21 by yishan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Imlx_linux -I/usr/include -O3
+CFLAGS = -Wall -Wextra -Werror -Ilibft -Imlx_linux -I/usr/include -O3
 
 NAME = so_long
 
-SRC = test.c
-		
+SRC = game_code/main.c \
+	game_code/map_reader.c \
+	game_code/map_check.c \
+	game_code/utils.c \
+	game_code/setting.c \
 
 OBJ = $(SRC:.c=.o)
 
-# MLX library directory
 MLX_DIR = mlx_linux
 
-# Rule to build object files
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+LIBFT = libft/libft.a
 
-# Rule to build the executable
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $(LIBFT) -o $(NAME)
+
+$(LIBFT):
+	make -C libft
+
+all: $(NAME)
 
 clean:
 	rm -f $(OBJ)
+	make clean -C libft
 
 fclean: clean
 	rm -f $(NAME)
+	make fclean -C libft
 
-re: fclean $(NAME)
+re: fclean all
 
 .PHONY: all clean fclean re

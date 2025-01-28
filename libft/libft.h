@@ -6,7 +6,7 @@
 /*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:47:00 by yisho             #+#    #+#             */
-/*   Updated: 2025/01/17 10:23:43 by yishan           ###   ########.fr       */
+/*   Updated: 2025/01/24 15:26:23 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "get_next_line.h"
+# include "ft_printf.h"
 
 typedef struct s_list
 {

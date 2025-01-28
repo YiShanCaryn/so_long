@@ -6,7 +6,7 @@
 /*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:03:54 by yishan            #+#    #+#             */
-/*   Updated: 2025/01/18 15:46:21 by yishan           ###   ########.fr       */
+/*   Updated: 2025/01/26 23:30:09 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@
 
 char	*get_next_line(int fd);
 char	*read_file(int fd, char *res);
-char	*ft_free(char *res, char	*buf);
-char	*ft_line(char	*buffer);
-char	*ft_next(char *buffer);
+char	*gft_free(char *res, char	*buf);
+char	*gft_line(char	*buffer);
+char	*gft_next(char *buffer);
 
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t elementnum, size_t elementsize);
-char	*ft_strchr(const char	*string, int searchChar);
-char	*ft_strjoin(const char	*s1, const char	*s2);
-size_t	gt_strlen(const char	*s);
+void	gft_bzero(void *s, size_t n);
+void	*gft_calloc(size_t elementnum, size_t elementsize);
+char	*gft_strchr(const char	*string, int searchChar);
+char	*gft_strjoin(const char	*s1, const char	*s2);
+size_t	gft_strlen(const char	*s);
 
 #endif
