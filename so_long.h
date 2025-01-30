@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:40:23 by yishan            #+#    #+#             */
-/*   Updated: 2025/01/27 21:12:08 by yishan           ###   ########.fr       */
+/*   Updated: 2025/01/30 11:24:54 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,12 @@ int		ft_check_top_bottom(char *row);
 int		ft_check_sides(char **map);
 int		ft_check_valid_chars(char **map);
 
+//core
+void	core_read(t_data *data);
+
 //utils
 void	check_content(t_count *content);
+void	set_img(t_data *data);
 void	ft_freemap(t_data *data);
 int		close_window(t_data *data);
 
