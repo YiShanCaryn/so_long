@@ -6,21 +6,22 @@
 #    By: yishan <yishan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 13:11:07 by yisho             #+#    #+#              #
-#    Updated: 2025/01/27 11:18:21 by yishan           ###   ########.fr        #
+#    Updated: 2025/02/01 18:32:41 by yishan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Ilibft -Imlx_linux -I/usr/include -O3
+CFLAGS = -Wall -Wextra -Werror -Igame_code -Ilibft -Imlx_linux -I/usr/include -O3
 
 NAME = so_long
 
-SRC = game_code/main.c \
+SRC = game_code/so_long.c \
 	game_code/map_reader.c \
 	game_code/map_check.c \
 	game_code/utils.c \
 	game_code/setting.c \
+	game_code/window_reader.c\
 
 OBJ = $(SRC:.c=.o)
 

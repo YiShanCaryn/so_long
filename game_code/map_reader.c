@@ -6,11 +6,11 @@
 /*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:22:28 by yishan            #+#    #+#             */
-/*   Updated: 2025/01/27 21:06:30 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/03 13:53:51 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
 int	format_check(char *map_name)
 {
@@ -58,7 +58,9 @@ char	**parse_map(char *path, t_data *data)
 	last_row = 0;
 	data->map = map_read(path);
 	if (!(ft_check_format(data->map)))
+	{
 		return (ft_freemap(data), NULL);
+	}
 	if (!(ft_check_valid_chars(data->map)))
 		return (ft_freemap(data), NULL);
 	if (!(ft_check_top_bottom(data->map[0])))
@@ -69,6 +71,10 @@ char	**parse_map(char *path, t_data *data)
 		return (ft_freemap(data), NULL);
 	if (!(ft_check_sides(data->map)))
 		return (ft_freemap(data), NULL);
-	ft_check_map(data);
+	if (!ft_check_map(data))
+	{
+		ft_printf("Error\nNeed 1 Player/Exit and at least 1 Object\n");
+		return (ft_freemap(data), NULL);
+	}
 	return (data->map);
 }

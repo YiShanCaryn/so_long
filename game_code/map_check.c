@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:27:12 by yishan            #+#    #+#             */
-/*   Updated: 2025/01/30 11:37:54 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/03 13:54:51 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
-void	ft_check_map(t_data *data)
+int	ft_check_map(t_data *data)
 {
 	int	i;
 	int	j;
@@ -35,10 +35,8 @@ void	ft_check_map(t_data *data)
 	}
 	if ((data->content.count_collect < 0 || data->content.count_exit != 1
 			|| data->content.count_player != 1))
-	{
-		ft_printf("Error\nNeed 1 Player/Exit and at least 1 Object\n");
-		return ;
-	}
+		return (0);
+	return (1);
 }
 
 int	ft_check_format(char **map)
