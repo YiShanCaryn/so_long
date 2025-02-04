@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:40:23 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/03 13:51:59 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/04 16:07:36 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <unistd.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include <string.h>
+# include <errno.h>
 
 # define IMG_SIZE 60
 # define FLOOR "game_images/tile.xpm"
@@ -98,12 +100,13 @@ void 	render_down(t_data *data);*/
 //setting
 void	init_player(t_data *data);
 void	check_content(t_count *content);
+void	set_img_paths(t_data *data);
 void	set_img(t_data *data);
 
 //utils
 void	ft_freemap(t_data *data);
-void	destroy_window(t_data *data);
-void	close_window(t_data *data);
+void	destroy_textures(t_data *data, void **image);
+void	clear_game(t_data *data);
 int		key_press(int keysym, t_data *data);
 
 #endif

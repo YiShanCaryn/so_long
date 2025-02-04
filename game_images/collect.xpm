@@ -160,7 +160,7 @@ static const char *fish1[] = {
 "F. c #FF80A4",
 "G. c #FF81A6",
 "H. c #FF80A4",
-"J. c None",
+"J. c #DCC48E",
 "K. c black",
 /* pixels */
 "J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.",

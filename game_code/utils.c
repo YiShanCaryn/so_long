@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:31:21 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/03 14:45:11 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/04 16:17:38 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_freemap(t_data *data)
 {
 	int	i;
 
+	if (data->map == NULL)
+		return ;
 	i = 0;
 	while (data->map[i] != NULL)
 	{
@@ -26,41 +28,41 @@ void	ft_freemap(t_data *data)
 	data->map = NULL;
 }
 
-void	destroy_window(t_data *data)
+void	destroy_textures(t_data *data, void **image)
 {
-	mlx_destroy_image(data->mlx_ptr, data->img.img_wall);
-	mlx_destroy_image(data->mlx_ptr, data->img.img_floor);
-	mlx_destroy_image(data->mlx_ptr, data->img.img_collect);
-	mlx_destroy_image(data->mlx_ptr, data->img.img_player);
-	mlx_destroy_image(data->mlx_ptr, data->img.img_exit);
-	mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+	if (image && *image)
+	{
+		mlx_destroy_image(data->mlx_ptr, *image);
+		*image = NULL;
+	}
 }
 
-/*void	close_window(t_data *data)
+void	clear_game(t_data *data)
 {
+	destroy_textures(data, &(data->img.img_wall));
+	destroy_textures(data, &(data->img.img_floor));
+	destroy_textures(data, &(data->img.img_collect));
+	destroy_textures(data, &(data->img.img_player));
+	destroy_textures(data, &(data->img.img_exit));
 	if (data->mlx_win)
 	{
-		mlx_clear_window(data->mlx_ptr, data->mlx_win);
-		destroy_window(data);
 		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
-		mlx_destroy_display(data->mlx_ptr);
-		ft_printf("Closing window\n");
+		data->mlx_win = NULL;
 	}
 	if (data->mlx_ptr)
 	{
+		mlx_destroy_display(data->mlx_ptr);
 		free(data->mlx_ptr);
-		ft_freemap(data);
-		ft_printf("Freeing map...\n");
+		data->mlx_ptr = NULL;
 	}
-	exit(0);
-}*/
+	ft_freemap(data);
+}
 
 int	key_press(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 	{
-		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
-		data->mlx_ptr = NULL;
+		mlx_loop_end(data->mlx_ptr);
 	}
 	/*if (keysym == XK_w)
 		render_top(data);

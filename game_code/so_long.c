@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:07:45 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/03 14:27:19 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/04 16:16:59 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,8 @@ int	main(int argc, char **argv)
 			init_window(&data);
 			set_img(&data);
 			loop_images(data);
-			
-			ft_freemap(&data);
 		}
-		else
-		{
-			//destroy_window(&data);
-			free(data.mlx_ptr);
-		}
+		clear_game(&data);
 	}
 	return (0);
 }

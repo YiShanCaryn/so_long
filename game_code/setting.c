@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:09:39 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/03 14:43:22 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/04 16:18:17 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_content(t_count *content)
 	content->collect = 'C';
 }
 
-void	set_img(t_data *data)
+void	set_img_paths(t_data *data)
 {
 	data->img.height = IMG_SIZE;
 	data->img.width = IMG_SIZE;
@@ -56,11 +56,11 @@ void	set_img(t_data *data)
 	data->img.collect = "./game_images/collect.xpm";
 	data->img.player = "./game_images/player.xpm";
 	data->img.exit = "./game_images/exit.xpm";
-	if (access(data->img.wall, F_OK) == -1)
-	{
-    	ft_printf("Error: File %s not found.\n", data->img.wall);
-    	destroy_window(data);
-	}
+}
+
+void	set_img(t_data *data)
+{
+	set_img_paths(data);
 	data->img.img_wall = mlx_xpm_file_to_image(data->mlx_ptr,
 			data->img.wall, &(data->img.width), &(data->img.height));
 	data->img.img_floor = mlx_xpm_file_to_image(data->mlx_ptr,
@@ -71,9 +71,11 @@ void	set_img(t_data *data)
 			data->img.collect, &(data->img.width), &(data->img.height));
 	data->img.img_player = mlx_xpm_file_to_image(data->mlx_ptr,
 			data->img.player, &(data->img.width), &(data->img.height));
-	if (!data->img.img_wall || !data->img.img_floor || !data->img.img_exit)
+	if (!data->img.img_wall || !data->img.img_floor || !data->img.img_exit
+		||!data->img.img_collect || !data->img.img_player)
 	{
-		ft_printf("Error\n Loading textures floor, exit, wall failed.\n");
+		ft_printf("Error\n Loading textures failed: %s.\n", strerror(errno));
+		clear_game(data);
 		exit (1);
 	}
 }

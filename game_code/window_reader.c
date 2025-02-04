@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_reader.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:06:36 by yisho             #+#    #+#             */
-/*   Updated: 2025/02/02 22:04:59 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/04 16:19:33 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	loop_images(t_data data)
 {
 	mlx_loop_hook(data.mlx_ptr, &render_loop, &data);
 	mlx_hook(data.mlx_win, 2, 1L >> 0, &key_press, &data);
-	//mlx_hook(data.mlx_win, 17, 0, &close_window, &data);
+	//mlx_hook(data.mlx_win, 17, 0, &clear_game, &data);
 	mlx_loop(data.mlx_ptr);
 }
 
@@ -72,7 +72,7 @@ static void	window_size(t_data *data)
 	if (!data->map || !data->map[0])
 	{
 		ft_printf("Error\n Map is invalid or empty.\n");
-		close_window(data);
+		clear_game(data);
 	}
 	data->width = ft_strlen(data->map[0]) * IMG_SIZE;
 	i = 0;
@@ -85,14 +85,17 @@ void	init_window(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
+	{
+		clear_game(data);
 		exit(1);
+	}
 	window_size(data);
 	data->mlx_win = mlx_new_window(data->mlx_ptr,
 			data->width, data->height, "So_long");
 	if (data->mlx_win == NULL)
 	{
 		ft_printf("Error: Failed to create window\n");
-		free(data->mlx_ptr);
-		return ;
+		clear_game(data);
+		exit(1);
 	}
 }

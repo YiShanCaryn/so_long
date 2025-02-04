@@ -192,7 +192,7 @@ static const char *cat[] = {
 "oX c #FBEEE1",
 "OX c #F3EAE6",
 "+X c #FEF2E4",
-"@X c None",
+"@X c #DCC48E",
 "#X c black",
 /* pixels */
 "@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X@X",
