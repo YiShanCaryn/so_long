@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:09:39 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/04 16:18:17 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/08 13:12:03 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	check_content(t_count *content)
 	content->count_player = 0;
 	content->count_exit = 0;
 	content->count_collect = 0;
+	content->count_fish = 0;
 	content->exit = 'E';
 	content->player = 'P';
 	content->wall = '1';

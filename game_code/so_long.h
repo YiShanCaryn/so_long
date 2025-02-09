@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:40:23 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/04 16:07:36 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/08 13:24:01 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,13 @@
 # include <errno.h>
 
 # define IMG_SIZE 60
-# define FLOOR "game_images/tile.xpm"
-# define WALL "game_images/wall.xpm"
-# define COLLECT "game_images/collect.xpm"
-# define PLAYER "game_images/player.xpm"
-# define EXIT "game_images/exit.xpm"
 
 typedef struct s_count
 {
 	int		count_player;
 	int		count_exit;
 	int		count_collect;
+	int		count_fish;
 	char	exit;
 	char	collect;
 	char	player;
@@ -92,10 +88,6 @@ void	init_window(t_data *data);
 void	loop_images(t_data data);
 int		render_loop(t_data *data);
 void	draw_tile(t_data *data, int width, int x, int y);
-/*void 	render_top(t_data *data);
-void 	render_right(t_data *data);
-void 	render_left(t_data *data);
-void 	render_down(t_data *data);*/
 
 //setting
 void	init_player(t_data *data);
@@ -107,6 +99,17 @@ void	set_img(t_data *data);
 void	ft_freemap(t_data *data);
 void	destroy_textures(t_data *data, void **image);
 void	clear_game(t_data *data);
+int		loop_end(t_data *data);
+
+//moves
+void	render_top(t_data *data);
+void	render_right(t_data *data);
+void	render_left(t_data *data);
+void	render_down(t_data *data);
 int		key_press(int keysym, t_data *data);
+void	process_move(t_data *data, int new_y, int new_x);
+int		can_exit(t_data *data);
+int		win_game(t_data *data);
+
 
 #endif

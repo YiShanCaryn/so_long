@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_reader.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:06:36 by yisho             #+#    #+#             */
-/*   Updated: 2025/02/04 16:19:33 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/05 14:07:24 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	loop_images(t_data data)
 {
 	mlx_loop_hook(data.mlx_ptr, &render_loop, &data);
 	mlx_hook(data.mlx_win, 2, 1L >> 0, &key_press, &data);
-	//mlx_hook(data.mlx_win, 17, 0, &clear_game, &data);
+	mlx_hook(data.mlx_win, 17, 0, loop_end, &data);
 	mlx_loop(data.mlx_ptr);
 }
 

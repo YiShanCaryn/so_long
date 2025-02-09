@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:31:21 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/04 16:17:38 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/06 13:14:33 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,11 @@ void	clear_game(t_data *data)
 	ft_freemap(data);
 }
 
-int	key_press(int keysym, t_data *data)
+int	loop_end(t_data *data)
 {
-	if (keysym == XK_Escape)
+	if (data->mlx_ptr != NULL)
 	{
 		mlx_loop_end(data->mlx_ptr);
 	}
-	/*if (keysym == XK_w)
-		render_top(data);
-	if (keysym == XK_d)
-		render_right(data);
-	if (keysym == XK_a)
-		render_left(data);
-	if (keysym == XK_s)
-		render_down(data);*/
 	return (0);
 }
