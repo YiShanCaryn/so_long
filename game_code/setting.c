@@ -6,7 +6,7 @@
 /*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:09:39 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/08 13:12:03 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/09 15:30:21 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,24 @@ void	init_player(t_data *data)
 		y = 0;
 		x++;
 	}
+}
+
+void	init_data(t_data *data)
+{
+	ft_bzero(data, sizeof(t_data));
+	data->width = 0;
+	data->height = 0;
+	data->count_steps = 0;
+	data->mlx_ptr = NULL;
+	data->mlx_win = NULL;
+	data->pos.x = 0;
+	data->pos.y = 0;
+	data->map = NULL;
+	data->img.img_collect = NULL;
+	data->img.img_exit = NULL;
+	data->img.img_floor = NULL;
+	data->img.img_player = NULL;
+	data->img.img_wall = NULL;
 }
 
 void	check_content(t_count *content)
@@ -76,7 +94,6 @@ void	set_img(t_data *data)
 		||!data->img.img_collect || !data->img.img_player)
 	{
 		ft_printf("Error\n Loading textures failed: %s.\n", strerror(errno));
-		clear_game(data);
 		exit (1);
 	}
 }

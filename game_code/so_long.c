@@ -6,7 +6,7 @@
 /*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:07:45 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/08 13:13:22 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/09 13:04:20 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_bzero(&data, sizeof(t_data));
+		init_data(&data);
 		check_content(&(data.content));
 		data.map = parse_map(argv[1], &data);
 		if (data.map != NULL)

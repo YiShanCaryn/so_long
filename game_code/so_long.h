@@ -6,7 +6,7 @@
 /*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:40:23 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/08 13:24:01 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/10 11:30:02 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_img
 	void	*img_exit;
 	void	*img_wall;
 	void	*img_collect;
+	void	*img_unlock;
 	int		height;
 	int		width;
 }				t_img;
@@ -70,6 +71,7 @@ typedef struct s_data
 	char	**map;
 	void	*mlx_ptr;
 	void	*mlx_win;
+	int		game_won;
 	t_count	content;
 	t_img	img;
 	t_pos	pos;
@@ -90,6 +92,7 @@ int		render_loop(t_data *data);
 void	draw_tile(t_data *data, int width, int x, int y);
 
 //setting
+void	init_data(t_data *data);
 void	init_player(t_data *data);
 void	check_content(t_count *content);
 void	set_img_paths(t_data *data);
@@ -110,6 +113,7 @@ int		key_press(int keysym, t_data *data);
 void	process_move(t_data *data, int new_y, int new_x);
 int		can_exit(t_data *data);
 int		win_game(t_data *data);
+void	display_win_message(t_data *data);
 
 
 #endif

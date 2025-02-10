@@ -6,7 +6,7 @@
 /*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:06:36 by yisho             #+#    #+#             */
-/*   Updated: 2025/02/05 14:07:24 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/10 13:44:32 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,14 @@ int	render_loop(t_data *data)
 	size_t	y;
 	int		width;
 
-	if (data->mlx_win == NULL)
-		return (0);
 	x = 0;
 	y = 0;
 	width = 0;
+	if (data->game_won)
+	{
+		display_win_message(data);
+		return (0);
+	}
 	while (data->map[x])
 	{
 		while (data->map[x][y] && data->map[x][y] != '\n')
@@ -84,15 +87,16 @@ static void	window_size(t_data *data)
 void	init_window(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
-	if (data->mlx_ptr == NULL)
+	if (!data->mlx_ptr)
 	{
+		ft_printf("Error: Failed to initialize MLX.\n");
 		clear_game(data);
 		exit(1);
 	}
 	window_size(data);
 	data->mlx_win = mlx_new_window(data->mlx_ptr,
 			data->width, data->height, "So_long");
-	if (data->mlx_win == NULL)
+	if (!data->mlx_win)
 	{
 		ft_printf("Error: Failed to create window\n");
 		clear_game(data);

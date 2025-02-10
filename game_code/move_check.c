@@ -6,7 +6,7 @@
 /*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:14:46 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/08 13:34:15 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/10 10:50:42 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	key_press(int keysym, t_data *data)
 	{
 		loop_end(data);
 	}
-	if (keysym == XK_w)
+	if (keysym == XK_w || keysym == XK_Up)
 		render_top(data);
-	if (keysym == XK_d)
+	if (keysym == XK_d || keysym == XK_Right)
 		render_right(data);
-	if (keysym == XK_a)
+	if (keysym == XK_a || keysym == XK_Left)
 		render_left(data);
-	if (keysym == XK_s)
+	if (keysym == XK_s || keysym == XK_Down)
 		render_down(data);
 	return (0);
 }
@@ -62,9 +62,14 @@ int	win_game(t_data *data)
 	if (can_exit(data)
 		&& data->map[data->pos.y][data->pos.x] == data->content.exit)
 	{
-		ft_printf("🎉 You Win! 🎉\n");
-		clear_game(data);
-		exit(0);
+		ft_printf("Game Over!🎉 You Win! 🎉\n");
+		data->game_won = 1;
 	}
 	return (0);
+}
+
+void	display_win_message(t_data *data)
+{
+	mlx_clear_window(data->mlx_ptr, data->mlx_win);
+	mlx_string_put(data->mlx_ptr, data->mlx_win, 200, 200, 0xFFFFFF, "YOU WIN!");
 }
