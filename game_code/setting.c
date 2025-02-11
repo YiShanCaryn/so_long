@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:09:39 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/09 15:30:21 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/11 10:31:12 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,6 @@ void	init_player(t_data *data)
 	}
 }
 
-void	init_data(t_data *data)
-{
-	ft_bzero(data, sizeof(t_data));
-	data->width = 0;
-	data->height = 0;
-	data->count_steps = 0;
-	data->mlx_ptr = NULL;
-	data->mlx_win = NULL;
-	data->pos.x = 0;
-	data->pos.y = 0;
-	data->map = NULL;
-	data->img.img_collect = NULL;
-	data->img.img_exit = NULL;
-	data->img.img_floor = NULL;
-	data->img.img_player = NULL;
-	data->img.img_wall = NULL;
-}
-
 void	check_content(t_count *content)
 {
 	content->count_player = 0;
@@ -75,6 +57,9 @@ void	set_img_paths(t_data *data)
 	data->img.collect = "./game_images/collect.xpm";
 	data->img.player = "./game_images/player.xpm";
 	data->img.exit = "./game_images/exit.xpm";
+	data->img.uheight = 200;
+	data->img.uwidth = 200;
+	data->img.unlock = "./game_images/unlocked.xpm";
 }
 
 void	set_img(t_data *data)
@@ -94,6 +79,11 @@ void	set_img(t_data *data)
 		||!data->img.img_collect || !data->img.img_player)
 	{
 		ft_printf("Error\n Loading textures failed: %s.\n", strerror(errno));
+		clear_game(data);
 		exit (1);
 	}
+	data->img.img_unlock = mlx_xpm_file_to_image(data->mlx_ptr,
+			data->img.unlock, &(data->img.uwidth), &(data->img.uheight));
+	if (!data->img.img_unlock)
+		clear_game(data);
 }

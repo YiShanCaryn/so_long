@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:14:46 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/10 10:50:42 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/11 14:09:05 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,16 @@ int	can_exit(t_data *data)
 {
 	if (data->content.count_fish == data->content.count_collect)
 	{
-		ft_printf("Exit unlocked! 🎉\n");
+		if (data->exitShowned == 0)
+		{
+			ft_printf("Exit unlocked! 🎉\n");
+			data->exitShowned = 1;
+		}
 		return (1);
 	}
 	else
 		return (0);
 }
-
 
 int	win_game(t_data *data)
 {
@@ -70,6 +73,13 @@ int	win_game(t_data *data)
 
 void	display_win_message(t_data *data)
 {
-	mlx_clear_window(data->mlx_ptr, data->mlx_win);
-	mlx_string_put(data->mlx_ptr, data->mlx_win, 200, 200, 0xFFFFFF, "YOU WIN!");
+	if (data->game_won == 1)
+	{
+		mlx_clear_window(data->mlx_ptr, data->mlx_win);
+		mlx_string_put(data->mlx_ptr, data->mlx_win,
+			400, 200, 0xFFFFFF, "YOU WIN!");
+		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win,
+			data->img.img_unlock, 100, 100);
+		data->game_won = 2;
+	}
 }

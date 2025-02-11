@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:07:45 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/09 13:04:20 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/11 09:50:56 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		init_data(&data);
+		ft_bzero(&data, sizeof(t_data));
 		check_content(&(data.content));
 		data.map = parse_map(argv[1], &data);
 		if (data.map != NULL)

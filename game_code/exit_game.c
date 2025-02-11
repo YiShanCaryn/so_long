@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:31:21 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/06 13:14:33 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/11 10:13:28 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	destroy_textures(t_data *data, void **image)
 
 void	clear_game(t_data *data)
 {
+	destroy_textures(data, &(data->img.img_unlock));
 	destroy_textures(data, &(data->img.img_wall));
 	destroy_textures(data, &(data->img.img_floor));
 	destroy_textures(data, &(data->img.img_collect));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_reader.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:06:36 by yisho             #+#    #+#             */
-/*   Updated: 2025/02/10 13:44:32 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/11 14:07:42 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	render_loop(t_data *data)
 	x = 0;
 	y = 0;
 	width = 0;
-	if (data->game_won)
+	if (data->game_won >= 1)
 	{
 		display_win_message(data);
 		return (0);

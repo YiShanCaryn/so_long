@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:40:23 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/10 11:30:02 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/11 11:25:29 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,15 @@ typedef struct s_img
 	char	*wall;
 	char	*collect;
 	char	*exit;
+	char	*unlock;
 	void	*img_floor;
 	void	*img_player;
 	void	*img_exit;
 	void	*img_wall;
 	void	*img_collect;
 	void	*img_unlock;
+	int		uheight;
+	int		uwidth;
 	int		height;
 	int		width;
 }				t_img;
@@ -72,6 +75,7 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*mlx_win;
 	int		game_won;
+	int		exitShowned;
 	t_count	content;
 	t_img	img;
 	t_pos	pos;
@@ -92,7 +96,7 @@ int		render_loop(t_data *data);
 void	draw_tile(t_data *data, int width, int x, int y);
 
 //setting
-void	init_data(t_data *data);
+//void	init_data(t_data *data);
 void	init_player(t_data *data);
 void	check_content(t_count *content);
 void	set_img_paths(t_data *data);
