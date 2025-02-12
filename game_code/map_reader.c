@@ -6,20 +6,30 @@
 /*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:22:28 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/03 13:53:51 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/12 13:07:41 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	format_check(char *map_name)
+void	format_check(char *map_name)
 {
 	if (ft_strncmp(map_name + ft_strlen(map_name) - 4, ".ber", 4) != 0)
 	{
 		ft_printf("Error\nNo correct format map found\n");
-		return (1);
+		exit (1);
 	}
-	return (0);
+}
+
+int	close_map(char *buff, char *line_map)
+{
+	ft_printf("Error\n Map not valid.\n");
+    if (line_map != NULL)
+        free(line_map);
+    if (buff != NULL)
+        free(buff);
+    exit(1);
+    return (0);
 }
 
 char	**map_read(char *map_name)
@@ -30,15 +40,15 @@ char	**map_read(char *map_name)
 	char	**map;
 	int		fd;
 
-	if (format_check(map_name) != 0)
-		return (NULL);
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
 	buff = ft_strdup("");
 	line_map = get_next_line(fd);
-	while (line_map != NULL)
+	while (line_map)
 	{
+		if (line_map[0] == '\n')
+			close_map(buff, line_map);
 		tmp_buff = buff;
 		buff = ft_strjoin(buff, line_map);
 		free(tmp_buff);

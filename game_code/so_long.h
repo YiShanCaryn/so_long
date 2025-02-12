@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:40:23 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/11 11:25:29 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/12 12:50:08 by yishan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_data
 
 //map
 char	**parse_map(char *path, t_data *data);
+void	format_check(char *map_name);
 int		ft_check_map(t_data *data);
 int		ft_check_format(char **map);
 int		ft_check_top_bottom(char *row);
