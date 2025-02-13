@@ -6,7 +6,7 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:40:23 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/13 10:17:29 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/13 15:40:30 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int		ft_check_valid_chars(char **map);
 void	init_window(t_data *data);
 void	loop_images(t_data data);
 int		render_loop(t_data *data);
-void	draw_tile(t_data *data, int width, int x, int y);
+void	draw_tile(t_data *data, int x, int y);
 
 //setting
 //void	init_data(t_data *data);

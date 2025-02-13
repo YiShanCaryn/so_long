@@ -6,56 +6,52 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:06:36 by yisho             #+#    #+#             */
-/*   Updated: 2025/02/11 14:07:42 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/13 15:41:49 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	draw_tile(t_data *data, int width, int x, int y)
+void	draw_tile(t_data *data, int x, int y)
 {
-	if (data->map[x][y] == '1')
+	if (data->map[y][x] == '1')
 		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win,
-			data->img.img_wall, width, x * IMG_SIZE);
-	else if (data->map[x][y] == '0')
+			data->img.img_wall, x * IMG_SIZE, y * IMG_SIZE);
+	else if (data->map[y][x] == '0')
 		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win,
-			data->img.img_floor, width, x * IMG_SIZE);
-	else if (data->map[x][y] == 'C')
+			data->img.img_floor, x * IMG_SIZE, y * IMG_SIZE);
+	else if (data->map[y][x] == 'C')
 		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win,
-			data->img.img_collect, width, x * IMG_SIZE);
-	else if (data->map[x][y] == 'P')
+			data->img.img_collect, x * IMG_SIZE, y * IMG_SIZE);
+	else if (data->map[y][x] == 'P')
 		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win,
-			data->img.img_player, width, x * IMG_SIZE);
-	else if (data->map[x][y] == 'E')
+			data->img.img_player, x * IMG_SIZE, y * IMG_SIZE);
+	else if (data->map[y][x] == 'E')
 		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win,
-			data->img.img_exit, width, x * IMG_SIZE);
+			data->img.img_exit, x * IMG_SIZE, y * IMG_SIZE);
 }
 
 int	render_loop(t_data *data)
 {
 	int		x;
 	size_t	y;
-	int		width;
 
 	x = 0;
 	y = 0;
-	width = 0;
 	if (data->game_won >= 1)
 	{
 		display_win_message(data);
 		return (0);
 	}
-	while (data->map[x])
+	while (data->map[y])
 	{
-		while (data->map[x][y] && data->map[x][y] != '\n')
+		while (data->map[y][x] && data->map[y][x] != '\n')
 		{
-			draw_tile(data, width, x, y);
-			width += IMG_SIZE;
-			y++;
+			draw_tile(data, x, y);
+			x++;
 		}
-		y = 0;
-		width = 0;
-		x++;
+		x = 0;
+		y++;
 	}
 	return (1);
 }

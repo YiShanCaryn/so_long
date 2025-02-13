@@ -6,12 +6,13 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:09:39 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/11 10:31:12 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/13 15:28:40 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+//MAP [Vertical: Y][Horizontal X]
 void	init_player(t_data *data)
 {
 	int	x;
@@ -19,19 +20,19 @@ void	init_player(t_data *data)
 
 	x = 0;
 	y = 0;
-	while (data->map[x])
+	while (data->map[y])
 	{
-		while (data->map[x][y])
+		while (data->map[y][x])
 		{
-			if (data->map[x][y] == 'P')
+			if (data->map[y][x] == 'P')
 			{
 				data->pos.x = x;
 				data->pos.y = y;
 			}
-			y++;
+			x++;
 		}
-		y = 0;
-		x++;
+		x = 0;
+		y++;
 	}
 }
 
