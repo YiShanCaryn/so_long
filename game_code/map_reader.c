@@ -6,7 +6,7 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:22:28 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/13 10:00:19 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/13 11:56:39 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,20 @@ void	format_check(char *map_name)
 	}
 }
 
-int	close_map(char *line_map, char *tmp_buff)
+int	close_map(char *line_map, char *tmp_buff, int fd)
 {
 	ft_printf("Error\nMap not valid.\n");
 	if (line_map != NULL)
 		free(line_map);
 	if (tmp_buff != NULL)
 		free(tmp_buff);
+	line_map = get_next_line(fd);
+	while (line_map)
+	{
+		free(line_map);
+		line_map = get_next_line(fd);
+	}
+	close(fd);
 	exit(1);
 	return (0);
 }
@@ -49,7 +56,7 @@ char	**map_read(char *map_name)
 	{
 		tmp_buff = buff;
 		if (line_map[0] == '\n')
-			close_map(line_map, tmp_buff);
+			close_map(line_map, tmp_buff, fd);
 		buff = ft_strjoin(buff, line_map);
 		free(tmp_buff);
 		free(line_map);
