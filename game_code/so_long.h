@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:40:23 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/12 12:50:08 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/13 10:17:29 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*mlx_win;
 	int		game_won;
-	int		exitShowned;
+	int		exitshowned;
 	t_count	content;
 	t_img	img;
 	t_pos	pos;
@@ -119,6 +119,5 @@ void	process_move(t_data *data, int new_y, int new_x);
 int		can_exit(t_data *data);
 int		win_game(t_data *data);
 void	display_win_message(t_data *data);
-
 
 #endif

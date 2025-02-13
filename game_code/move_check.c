@@ -6,7 +6,7 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:14:46 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/11 14:09:05 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/13 10:17:41 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ int	can_exit(t_data *data)
 {
 	if (data->content.count_fish == data->content.count_collect)
 	{
-		if (data->exitShowned == 0)
+		if (data->exitshowned == 0)
 		{
 			ft_printf("Exit unlocked! 🎉\n");
-			data->exitShowned = 1;
+			data->exitshowned = 1;
 		}
 		return (1);
 	}

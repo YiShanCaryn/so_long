@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:22:28 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/12 18:30:51 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/13 10:00:19 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	format_check(char *map_name)
 	}
 }
 
-int	close_map(char *buff, char *line_map)
+int	close_map(char *line_map, char *tmp_buff)
 {
-	ft_printf("Error\n Map not valid.\n");
+	ft_printf("Error\nMap not valid.\n");
 	if (line_map != NULL)
 		free(line_map);
-	if (buff != NULL)
-		free(buff);
+	if (tmp_buff != NULL)
+		free(tmp_buff);
 	exit(1);
 	return (0);
 }
@@ -47,9 +47,9 @@ char	**map_read(char *map_name)
 	line_map = get_next_line(fd);
 	while (line_map)
 	{
-		if (line_map[0] == '\n')
-			close_map(buff, line_map);
 		tmp_buff = buff;
+		if (line_map[0] == '\n')
+			close_map(line_map, tmp_buff);
 		buff = ft_strjoin(buff, line_map);
 		free(tmp_buff);
 		free(line_map);
