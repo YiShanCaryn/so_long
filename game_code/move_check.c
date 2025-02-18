@@ -6,7 +6,7 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:14:46 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/13 10:17:41 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/18 14:16:08 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	win_game(t_data *data)
 	if (can_exit(data)
 		&& data->map[data->pos.y][data->pos.x] == data->content.exit)
 	{
-		ft_printf("Game Over!🎉 You Win! 🎉\n");
 		data->game_won = 1;
+		ft_printf("Game Over!🎉 You Win! 🎉\n");
 	}
 	return (0);
 }

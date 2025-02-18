@@ -6,7 +6,7 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:22:28 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/13 11:56:39 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/18 16:37:39 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,7 @@ char	**parse_map(char *path, t_data *data)
 	last_row = 0;
 	data->map = map_read(path);
 	if (!(ft_check_format(data->map)))
-	{
 		return (ft_freemap(data), NULL);
-	}
 	if (!(ft_check_valid_chars(data->map)))
 		return (ft_freemap(data), NULL);
 	if (!(ft_check_top_bottom(data->map[0])))
@@ -88,9 +86,9 @@ char	**parse_map(char *path, t_data *data)
 		return (ft_freemap(data), NULL);
 	if (!(ft_check_sides(data->map)))
 		return (ft_freemap(data), NULL);
-	if (!ft_check_map(data))
+	if (!ft_check_map(data) || !path_valid(data))
 	{
-		ft_printf("Error\nNeed 1 Player/Exit and at least 1 Object\n");
+		ft_printf("Error\nNeed 1 Player/Exit/1 Object that are accessible\n");
 		return (ft_freemap(data), NULL);
 	}
 	return (data->map);

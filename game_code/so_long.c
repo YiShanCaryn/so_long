@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yishan <yishan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:07:45 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/12 12:49:45 by yishan           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:36:17 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 			init_player(&data);
 			init_window(&data);
 			set_img(&data);
-			loop_images(data);
+			loop_images(&data);
 		}
 		clear_game(&data);
 	}

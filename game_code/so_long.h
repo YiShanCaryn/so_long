@@ -6,7 +6,7 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:40:23 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/13 15:40:30 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/18 16:17:14 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*mlx_win;
 	int		game_won;
+	int		player_move;
 	int		exitshowned;
 	t_count	content;
 	t_img	img;
@@ -90,9 +91,13 @@ int		ft_check_top_bottom(char *row);
 int		ft_check_sides(char **map);
 int		ft_check_valid_chars(char **map);
 
+//flood
+char	**copy_map(t_data *data);
+int		path_valid(t_data *data);
+
 //core
 void	init_window(t_data *data);
-void	loop_images(t_data data);
+void	loop_images(t_data *data);
 int		render_loop(t_data *data);
 void	draw_tile(t_data *data, int x, int y);
 

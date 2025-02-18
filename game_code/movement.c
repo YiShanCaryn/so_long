@@ -6,7 +6,7 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:23:18 by yishan            #+#    #+#             */
-/*   Updated: 2025/02/13 11:40:04 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/18 14:12:34 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	render_top(t_data *data)
 
 	pos_x = data->pos.x;
 	pos_y = data->pos.y;
+	data->player_move = 1;
 	if (data->game_won >= 1)
 		return ;
 	if (data->map[pos_y - 1][pos_x] == data->content.exit)
@@ -49,6 +50,7 @@ void	render_right(t_data *data)
 		return ;
 	pos_x = data->pos.x;
 	pos_y = data->pos.y;
+	data->player_move = 1;
 	if (data->map[pos_y][pos_x + 1] == data->content.exit)
 	{
 		if (!can_exit(data))
@@ -75,6 +77,7 @@ void	render_left(t_data *data)
 
 	pos_x = data->pos.x;
 	pos_y = data->pos.y;
+	data->player_move = 1;
 	if (data->game_won >= 1)
 		return ;
 	if (data->map[pos_y][pos_x - 1] == data->content.exit)
@@ -103,6 +106,7 @@ void	render_down(t_data *data)
 
 	pos_x = data->pos.x;
 	pos_y = data->pos.y;
+	data->player_move = 1;
 	if (data->game_won >= 1)
 		return ;
 	if (data->map[pos_y + 1][pos_x] == data->content.exit)

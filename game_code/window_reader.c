@@ -6,7 +6,7 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:06:36 by yisho             #+#    #+#             */
-/*   Updated: 2025/02/13 15:41:49 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/18 14:14:07 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	render_loop(t_data *data)
 		display_win_message(data);
 		return (0);
 	}
+	if (!data->player_move)
+		return (1);
 	while (data->map[y])
 	{
 		while (data->map[y][x] && data->map[y][x] != '\n')
@@ -53,15 +55,17 @@ int	render_loop(t_data *data)
 		x = 0;
 		y++;
 	}
+	data->player_move = 0;
 	return (1);
 }
 
-void	loop_images(t_data data)
+void	loop_images(t_data *data)
 {
-	mlx_loop_hook(data.mlx_ptr, &render_loop, &data);
-	mlx_hook(data.mlx_win, 2, 1L >> 0, &key_press, &data);
-	mlx_hook(data.mlx_win, 17, 0, loop_end, &data);
-	mlx_loop(data.mlx_ptr);
+	data->player_move = 1;
+	mlx_loop_hook(data->mlx_ptr, &render_loop, data);
+	mlx_hook(data->mlx_win, 2, 1L >> 0, &key_press, data);
+	mlx_hook(data->mlx_win, 17, 0, loop_end, data);
+	mlx_loop(data->mlx_ptr);
 }
 
 static void	window_size(t_data *data)

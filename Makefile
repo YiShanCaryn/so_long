@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yishan <yishan@student.42.fr>              +#+  +:+       +#+         #
+#    By: yisho <yisho@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 13:11:07 by yisho             #+#    #+#              #
-#    Updated: 2025/02/06 12:18:09 by yishan           ###   ########.fr        #
+#    Updated: 2025/02/18 14:21:02 by yisho            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = game_code/so_long.c \
 	game_code/window_reader.c\
 	game_code/movement.c\
 	game_code/move_check.c\
+	game_code/floodfill_check.c\
 
 OBJ = $(SRC:.c=.o)
 
