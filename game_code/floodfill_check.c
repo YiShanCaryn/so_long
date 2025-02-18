@@ -6,7 +6,7 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:28:54 by yisho             #+#    #+#             */
-/*   Updated: 2025/02/18 16:35:47 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/18 16:52:15 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,30 +59,39 @@ void	ft_freecopymap(char	**mapcopy)
 	free(mapcopy);
 }
 
+static int	com_map(t_data *data, char	**mapcopy)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (data->map[y])
+	{
+		while (data->map[y][x])
+		{
+			if (data->map[y][x] == 'E' && mapcopy[y][x] == 'E')
+				return (0);
+			else if (data->map[y][x] == 'C' && mapcopy[y][x] == 'C')
+				return (0);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	return (1);
+}
+
 int	path_valid(t_data *data)
 {
 	char	**mapcopy;
+	int		result;
 
 	mapcopy = copy_map(data);
 	init_player(data);
 	flood(mapcopy, data->pos.y, data->pos.x);
-	
-	//DEBUG
-	int i = 0;
-	int j = 0;
-	while (mapcopy[i])
-	{
-		j = 0;
-		while(mapcopy[i][j])
-		{
-			printf("%c", mapcopy[i][j]);
-			j++;
-		}
-		printf ("\n");
-		i++;
-	}
-	//DEBUG
+	result = com_map(data, mapcopy);
 	ft_freecopymap(mapcopy);
 	mapcopy = NULL;
-	return (1);
+	return (result);
 }
