@@ -6,7 +6,7 @@
 /*   By: yisho <yisho@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:28:54 by yisho             #+#    #+#             */
-/*   Updated: 2025/02/18 16:52:15 by yisho            ###   ########.fr       */
+/*   Updated: 2025/02/25 11:33:20 by yisho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,19 @@ char	**copy_map(t_data *data)
 
 void	flood(char **map, int y, int x)
 {
+	char	current_type;
+
 	if (map[y][x] == '1' || map[y][x] == 'Z')
 		return ;
+	current_type = map[y][x];
 	map[y][x] = 'Z';
-	flood(map, y - 1, x);
-	flood(map, y + 1, x);
-	flood(map, y, x - 1);
-	flood(map, y, x + 1);
+	if (current_type != 'E')
+	{
+		flood(map, y - 1, x);
+		flood(map, y + 1, x);
+		flood(map, y, x - 1);
+		flood(map, y, x + 1);
+	}
 }
 
 void	ft_freecopymap(char	**mapcopy)
